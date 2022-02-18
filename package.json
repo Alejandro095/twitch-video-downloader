@@ -1,0 +1,45 @@
+{
+    "name": "twitch-video-downloader",
+    "version": "1.6.0",
+    "description": "A library to download twitch videos",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Alejandro095/twitch-video-downloader"
+    },
+    "scripts": {
+        "build": "tsc -p ./tsconfig.json",
+        "dev:watch": "cross-env TWITCH_VIDEO_DOWNLOADER_DEBUG=true nodemon",
+        "format": "prettier --write .",
+        "prepare": "npm run build",
+        "start:example": "ts-node example/index.ts",
+        "start:hls-server": "node ./hls-server.js",
+        "start:watch": "nodemon"
+    },
+    "keywords": [
+        "Twitch",
+        "video",
+        "downloader"
+    ],
+    "author": "Alejandro Tovar",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/fluent-ffmpeg": "^2.1.20",
+        "@types/tiny-async-pool": "^1.0.0",
+        "cross-env": "^7.0.3",
+        "hls-server": "^1.5.0",
+        "nodemon": "^2.0.15",
+        "prettier": "^2.5.1",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.4"
+    },
+    "dependencies": {
+        "@lifeomic/attempt": "^3.0.1",
+        "cross-fetch": "^3.1.4",
+        "fluent-ffmpeg": "^2.1.2",
+        "http-attach": "^1.0.0",
+        "tiny-async-pool": "^1.2.0",
+        "winston": "^3.3.3"
+    }
+}

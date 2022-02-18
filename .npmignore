@@ -1,0 +1,14 @@
+*.log
+*.md
+
+.gitignore
+.prettierignore
+.prettierrc
+
+downloads/
+example/
+src/
+
+hls-server.js
+nodemon.json
+tsconfig.json
