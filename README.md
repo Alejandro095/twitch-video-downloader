@@ -8,6 +8,10 @@ Library to download the videos, videos for subs and comments from twitch.
 $ npm i twitch-video-downloader
 ```
 
+## Requirements
+
+The [FFMPEG](https://www.ffmpeg.org/) library is needed to transcode video files from m3u8 to mkv
+
 ## Usage
 
 ```js
