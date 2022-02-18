@@ -1,4 +1,5 @@
 export { VideoDownloader } from "./video-downloader";
+export { TwitchOAuth } from "./twitch-oauth"
 
 // Utils
 export { ensureDirectoryExists } from "./utils/filesystem";
