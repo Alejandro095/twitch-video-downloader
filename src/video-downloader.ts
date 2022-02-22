@@ -152,8 +152,6 @@ export class VideoDownloader extends EventEmitter {
         log("[VideoDownloader] Video transcode, with options");
         if (options) log(JSON.stringify(options, undefined, 2));
 
-        const deleteHslFiles = options?.deleteHslFiles ? true : false;
-
         const m3u8FilePath = join(videoSaved.folderPath, "index.m3u8");
 
         if (!existsSync(m3u8FilePath)) {
@@ -161,7 +159,9 @@ export class VideoDownloader extends EventEmitter {
         }
 
         const outputPathFolder = join(this._rootProjectPath, `downloads/videos/${videoSaved.vodID}/mkv`);
-        const outputPath = join(outputPathFolder, `${videoSaved.quality}.mkv`);
+        const outputPath = options?.outputPath
+                                ? join(options.outputPath, `${videoSaved.vodID}-${videoSaved.quality}.mkv`)
+                                : join(outputPathFolder, `${videoSaved.quality}.mkv`);
 
         log(`[VideoDownloader] Transcode output path: ${outputPath}`);
 
@@ -184,7 +184,7 @@ export class VideoDownloader extends EventEmitter {
                         return reject(err);
                     }
 
-                    if (deleteHslFiles) {
+                    if (options?.deleteHslFiles) {
                         log(`[VideoDownloader] Delete HLS files`);
                         rmSync(videoSaved.folderPath, { recursive: true, force: true });
                     }

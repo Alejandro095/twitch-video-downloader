@@ -156,7 +156,7 @@ twitchOAuth.login("<YOUR TWITCH USER>", "<YOUR PASSWORD>", loginDefaultOptions).
 
 ## Events
 
-| Event name         | Description                                                     | Arguments                                            |
+| Event name         | Description                                                     | Parameters                                           |
 | ------------------ | --------------------------------------------------------------- | ---------------------------------------------------- |
 | progress-download  | The event is called each time the download progress is updated  | decimal                                              |
 | progress-transcode | The event is called each time the transcode progress is updated | decimal                                              |
@@ -168,7 +168,7 @@ Example to register your listeners
 ```js
 const downloader = new VideoDownloader("https://www.twitch.tv/videos/800558240");
 
-downloader.on("<EVENT NAME>", (arg) => console.log(arg));
+downloader.on("<EVENT NAME>", (param) => console.log(param));
 ```
 
 ## Methods
@@ -241,6 +241,15 @@ const download = await downloader.download(resolutions[0]);
 
 // Trancoded video, from HLS to MKV
 const transcode = await downloader.transcode(download);
+```
+
+The function also receives an optional second argument in the form of an object with additional settings.
+
+```js
+const transcode = await downloader.transcode(download, {
+    deleteHslFiles: false, // Default value
+    outputPath: "<WORKING DIRECTORY>/downloads/videos/<VIDEO ID>/mkv/", // Default value
+});
 ```
 
 Once the function is finished executing, it returns an object with the following information
