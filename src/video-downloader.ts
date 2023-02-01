@@ -17,16 +17,10 @@ import { parseURL } from "./utils/parse-url";
 import { MkvVideo } from "./interfaces/mkv-video";
 import { HslVideo } from "./interfaces/hls-video";
 import { VideoDownloadInformation } from "./interfaces/video-download-information";
+import { VideoDownloaderOptions } from "./interfaces/video-downloader-options";
 import { TranscodeOptions } from "./interfaces/transcode-options";
 
 import { ERRORS } from "./enums/errors";
-interface options {
-    poolLimit?: number;
-    downloadFolder?: string;
-    clientID?: string;
-    oAuthToken?: string;
-    debug?: boolean;
-}
 
 export class VideoDownloader extends EventEmitter {
     private _clientID: string = "kimne78kx3ncx6brgo4mv6wki5h1ko";
@@ -43,7 +37,7 @@ export class VideoDownloader extends EventEmitter {
     private _videoURL: string;
     private _vodID: string;
 
-    constructor(videoURL: string, options?: options) {
+    constructor(videoURL: string, options?: VideoDownloaderOptions) {
         super();
 
         if (options) {
